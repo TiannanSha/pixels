@@ -24,10 +24,10 @@ public class ITTestWriteVectorColumnToS3 {
         // Note you may need to restart intellij to let it pick up the updated environment variable value
         // example path: s3://bucket-name/test-file.pxl
         //String pixelsFile = System.getenv("PIXELS_S3_TEST_BUCKET_PATH") + "test-vec-larger2.pxl";
-        String pixelsFile = "s3://tiannan-test/test_arr_table_7/v-0-ordered/1.pxl";
+        String pixelsFile = "s3://tiannan-test/test_arr_table/v-0-ordered/2.pxl";
         Storage storage = StorageFactory.Instance().getStorage("s3");
 
-        int dimension = 256;
+        int dimension = 2;
         String schemaStr = String.format("struct<arr_col:vector(%s)>", dimension);
 
         try
@@ -57,7 +57,7 @@ public class ITTestWriteVectorColumnToS3 {
                 int row = rowBatch.size++;
                 v.vector[row] = new double[dimension];
                 for (int d=0; d<dimension; d++) {
-                    v.vector[row][d] = 0.1 + i;
+                    v.vector[row][d] = -1 - d*i;
                 }
                 v.isNull[row] = false;
                 if (rowBatch.size == rowBatch.getMaxSize())

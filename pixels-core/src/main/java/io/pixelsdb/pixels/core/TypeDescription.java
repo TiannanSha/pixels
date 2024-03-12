@@ -76,7 +76,7 @@ public final class TypeDescription
     /**
      * The default dimension of vector
      */
-    public static final int DEFAULT_VECTOR_DIMENSION = 2;
+    public static final int DEFAULT_VECTOR_DIMENSION = 300;
     /**
      * the supported maximum dimension
      */

@@ -17,7 +17,7 @@ public class ITTestReadVectorColumnFromS3 {
 
     public static void main(String[] args)
     {
-        readVectorColumn("s3://tiannan-test/test_arr_table_4/v-0-ordered/1.pxl");
+        readVectorColumn("s3://tiannan-test/test_arr_table/v-0-ordered/2.pxl");
     }
 
     public static void readVectorColumn(String currentPath) {
