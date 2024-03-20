@@ -242,7 +242,6 @@ public class VectorColumnVector extends ColumnVector
     @Override
     public void add(double[] vec)
     {
-        assert(vec.length == dimension);
         if (writeIndex >= getLength())
         {
             ensureSize(writeIndex * 2, true);
@@ -250,5 +249,24 @@ public class VectorColumnVector extends ColumnVector
         int index = writeIndex++;
         vector[index] = vec;
         isNull[index] = false;
+    }
+
+    @Override
+    public void add(String value) {
+        String[] numStrs = value.split("\\s+");
+        dimension = numStrs.length;
+        double[] vec = new double[numStrs.length];
+        for (int i=0; i<numStrs.length; i++) {
+            vec[i] = Double.parseDouble(numStrs[i]);
+        }
+        add(vec);
+    }
+
+    @Override
+    public void reset()
+    {
+        super.reset();
+        // fill null to release memory.
+        Arrays.fill(vector, null);
     }
 }
